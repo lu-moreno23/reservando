@@ -35,3 +35,30 @@ describe('Tests del array contenido en reservarHorario(horario)', function(){
     });
 });
 
+describe('Tests correspondientes a la funcion obtenerPuntuacion()', function(){
+    it('Dado un restaurant con determinadas calificaciones, la puntuacion (el promedio de ellas), se calcula correctamente', function(){
+        let seleccionDeRestaurant = listado.restaurantes[0];
+
+        let promedioCalificacion = seleccionDeRestaurant.calificaciones.reduce(function(a,b){
+            return a + b;
+        }) / seleccionDeRestaurant.calificaciones.length;
+
+        expect(seleccionDeRestaurant.obtenerPuntuacion()).to.equal(promedioCalificacion);
+
+
+    });
+    it('Dado un restaurant que no tiene ninguna calificacion, la puntuacion es igual a 0', function(){
+        //selecciono un restaurant
+        let restarauntParaSacarCalificacion = listado.restaurantes[0];
+
+        //recorro calificaciones para quitarlas y que quede en 0
+        for (let i = restarauntParaSacarCalificacion.calificaciones.length; i > 0; i--){
+            restarauntParaSacarCalificacion.calificaciones.pop();
+        }
+
+        expect(restarauntParaSacarCalificacion.obtenerPuntuacion()).to.equal(0);
+
+
+    });
+});
+
