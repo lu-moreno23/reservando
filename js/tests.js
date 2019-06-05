@@ -60,5 +60,63 @@ describe('Tests correspondientes a la funcion obtenerPuntuacion()', function(){
 
 
     });
+
+    
 });
+
+describe('Tests correspondientes a la funcion calificar()', function(){
+    it('Selecciono un restaurant y lo califico con 0', function(){
+        let seleccionDeRestaurantParaCalificar = listado.restaurantes[4];
+        let arrayCalificaciones = listado.restaurantes[4].calificaciones.length;
+
+        seleccionDeRestaurantParaCalificar.calificar(0)
+        let nuevasCalificaciones = listado.restaurantes[4].calificaciones.length;
+
+        //Compruebo que al calificar con 0, no se hayan agregado nuevas calificaciones al array nuevasCalificaciones
+        expect(nuevasCalificaciones).to.equal(arrayCalificaciones);
+
+
+    });
+    it('Intento calificar un restaurant con un caracter que no sea un numero', function(){
+
+        let calificacionEnNumero = 5;
+
+        //compruebo que si le paso un numero no lo tome como string
+
+        expect(calificacionEnNumero).to.not.be.a('string')
+
+
+    });
+
+    
+});
+
+
+/*describe('Tests correspondientes a la funcion buscarRestaurante(id)', function(){
+    it('Paso un ID inexistente para que intente buscar el restaurant', function(){
+        let seleccionDeRestaurantParaCalificar = listado.restaurantes[4];
+        let arrayCalificaciones = listado.restaurantes[4].calificaciones.length;
+
+        seleccionDeRestaurantParaCalificar.calificar(0)
+        let nuevasCalificaciones = listado.restaurantes[4].calificaciones.length;
+
+        //Compruebo que al calificar con 0, no se hayan agregado nuevas calificaciones al array nuevasCalificaciones
+        expect(nuevasCalificaciones).to.equal(arrayCalificaciones);
+
+
+    });
+    it('Intento calificar un restaurant con un caracter que no sea un numero', function(){
+
+        let calificacionEnNumero = 5;
+
+        //compruebo que si le paso un numero no lo tome como string
+
+        expect(calificacionEnNumero).to.not.be.a('string')
+
+
+    });
+
+    
+});*/
+
 
